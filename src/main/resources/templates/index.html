@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml" lang="EN">
+    <head>
+        <meta charset="utf-8"/>
+        <title>SuperShop</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+
+            <div style="text-align: left;">
+                <h1>Директории и файлы</h1>
+            </div>
+
+            <hr>
+
+            <div class="container row">
+                <form th:action="@{/addir}" method="POST" class="form-inline">
+                    <div class="col-sm">
+                        <input type="text" name="fullPath" placeholder="введите путь к директории здесь" class="form-control">
+                    </div>
+                    <button class="btn btn-outline-secondary" type="submit">Добавить в список</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
