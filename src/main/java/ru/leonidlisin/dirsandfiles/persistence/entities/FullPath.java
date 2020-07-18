@@ -1,7 +1,6 @@
 package ru.leonidlisin.dirsandfiles.persistence.entities;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -13,6 +12,9 @@ import java.util.UUID;
 @Table(name = "full_path_tbl")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class FullPath {
 
     @Id
