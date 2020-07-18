@@ -1,1 +1,18 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /dirs_and_files
 
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dirsandfiles?useUnicode=true&characterEncoding=utf8
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: admin
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    show-sql: true
+    hibernate:
+        ddl-auto: none
+  thymeleaf:
+    cache: false
