@@ -50,7 +50,7 @@ public class FullPathService {
                 .fullPath(fullPath.getFullPath())
                 .date(fullPath.getDate())
                 .dateFormatted(
-                    new SimpleDateFormat("d.MM.y k.m", Locale.getDefault()).format(fullPath.getDate())
+                    new SimpleDateFormat("d.MM.y k.mm", Locale.getDefault()).format(fullPath.getDate())
                 )
                 .build();
 
