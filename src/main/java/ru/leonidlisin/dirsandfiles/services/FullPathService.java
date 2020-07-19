@@ -20,8 +20,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FullPathService {
 
-    private final String datePattern = "d.MM.y k.m";
-
     private final FullPathRepository fullPathRepository;
     private final FileService fileService;
     private final FullPathFacade fullPathFacade;
@@ -52,7 +50,7 @@ public class FullPathService {
                 .fullPath(fullPath.getFullPath())
                 .date(fullPath.getDate())
                 .dateFormatted(
-                    new SimpleDateFormat(datePattern, Locale.getDefault()).format(fullPath.getDate())
+                    new SimpleDateFormat("d.MM.y k.m", Locale.getDefault()).format(fullPath.getDate())
                 )
                 .build();
 
