@@ -6,6 +6,7 @@ import ru.leonidlisin.dirsandfiles.beans.FilePathBean;
 import ru.leonidlisin.dirsandfiles.persistence.dto.FullPathDto;
 import ru.leonidlisin.dirsandfiles.persistence.entities.FullPath;
 import ru.leonidlisin.dirsandfiles.persistence.repositories.FullPathRepository;
+import ru.leonidlisin.dirsandfiles.utils.sort.FileNameComparator;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class FullPathService {
     private final FullPathRepository fullPathRepository;
     private final FileService fileService;
     private final FilePathBean filePathBean;
+    private final FileNameComparator comparator;
 
     public List<FullPath> getAllFullPathes(){
         return fullPathRepository.findAll();
@@ -89,12 +91,12 @@ public class FullPathService {
     private List<Path> getDirContent(String fullPath) throws IOException {
         List<Path> folders =  Files.list(Paths.get(fullPath))
                 .filter(p -> Files.isDirectory(p))
-                .sorted((Comparator.naturalOrder()))
+                .sorted((comparator))
                 .collect(Collectors.toList());
 
         List<Path> files =  Files.list(Paths.get(fullPath))
                 .filter(p -> !Files.isDirectory(p))
-                .sorted((Comparator.naturalOrder()))
+                .sorted((comparator))
                 .collect(Collectors.toList());
         List<Path> all = new ArrayList<>(folders);
         all.addAll(files);

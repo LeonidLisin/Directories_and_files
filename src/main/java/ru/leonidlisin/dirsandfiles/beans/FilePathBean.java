@@ -17,11 +17,13 @@ public class FilePathBean {
 
     private List<FullPathDto> fullPathDtoList;
     private List<FileDto> fileDtoList;
+    private StringBuilder block;
 
     @PostConstruct
     public void init(){
         this.fullPathDtoList = new ArrayList<>();
         this.fileDtoList = new ArrayList<>();
+        this.block = new StringBuilder();
     }
 
     public String formatSize(long size){
