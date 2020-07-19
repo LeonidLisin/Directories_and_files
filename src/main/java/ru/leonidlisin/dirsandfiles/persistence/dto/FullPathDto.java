@@ -7,4 +7,7 @@ import lombok.Setter;
 @Setter
 public class FullPathDto {
     private String fullPath;
+    private int filesCount;
+    private int dirsCount;
+    private long summarySize;
 }
