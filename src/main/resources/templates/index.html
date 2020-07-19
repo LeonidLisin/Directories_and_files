@@ -18,12 +18,15 @@
 
             <div class="container row">
                 <form th:action="@{/addir}" method="POST" class="form-inline">
+                    Новая директория
                     <div class="col-sm">
-                        <input type="text" name="fullPath" placeholder="введите путь к директории здесь" class="form-control">
+                        <input type="text" name="fullPath" placeholder="введите путь к директории" class="form-control input-normal">
                     </div>
                     <button class="btn btn-outline-secondary" type="submit">Добавить в список</button>
                 </form>
             </div>
+
+            <br>
 
             <table class="table table-hover">
                 <thead class="thead-dark">
@@ -38,11 +41,11 @@
                 </thead>
                 <tbody>
                     <tr th:each="fullPath, iterator : ${fullPathList}">
-                        <td th:text="${fullPath.date}"></td>
+                        <td th:text="${fullPath.dateFormatted}"></td>
                         <td th:text="${fullPath.fullPath}"></td>
                         <td th:text="${fullPath.dirsCount}"></td>
                         <td th:text="${fullPath.filesCount}"></td>
-                        <td th:text="${fullPath.summarySize}"></td>
+                        <td th:text="${fullPath.summarySizeFormatted}"></td>
                         <td>
                             <form th:action="@{'/files/' + ${fullPath.id}}" method="POST" class="form-inline">
                                 <button class="btn btn-outline-secondary" type="submit">Файлы</button>

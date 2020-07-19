@@ -81,7 +81,7 @@ public class FullPathService {
         } catch (IOException e){
             e.printStackTrace();
         }
-
+        fullPathDto.setSummarySizeFormatted(fullPathFacade.formatSize(fullPathDto.getSummarySize()));
         return fullPathDto;
     }
 

@@ -18,4 +18,5 @@ public class FullPathDto {
     private int filesCount;
     private int dirsCount;
     private long summarySize;
+    private String summarySizeFormatted;
 }
