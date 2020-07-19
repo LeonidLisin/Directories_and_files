@@ -14,6 +14,7 @@ public class FullPathDto {
     private UUID id;
     private String fullPath;
     private Date date;
+    private String dateFormatted;
     private int filesCount;
     private int dirsCount;
     private long summarySize;

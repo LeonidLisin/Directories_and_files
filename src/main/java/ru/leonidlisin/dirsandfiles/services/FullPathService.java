@@ -12,12 +12,15 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class FullPathService {
+
+    private final String datePattern = "d.MM.y k.m";
 
     private final FullPathRepository fullPathRepository;
     private final FileService fileService;
@@ -43,10 +46,14 @@ public class FullPathService {
     }
 
     public FullPathDto obtainDirInfo(FullPath fullPath){
+
         FullPathDto fullPathDto = FullPathDto.builder()
                 .id(fullPath.getId())
                 .fullPath(fullPath.getFullPath())
                 .date(fullPath.getDate())
+                .dateFormatted(
+                    new SimpleDateFormat(datePattern, Locale.getDefault()).format(fullPath.getDate())
+                )
                 .build();
 
         Path rootPath = Paths.get(fullPath.getFullPath());
