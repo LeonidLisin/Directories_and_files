@@ -28,7 +28,7 @@
         <tbody>
         <tr th:each="file, iterator : ${fileList}">
             <td th:text="${file.name}"></td>
-            <td th:text="${file.size}"></td>
+            <td th:text="${file.sizeFormatted}"></td>
         </tr>
         </tbody>
     </table>

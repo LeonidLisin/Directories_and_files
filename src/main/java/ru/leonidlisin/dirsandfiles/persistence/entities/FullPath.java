@@ -5,7 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -29,6 +29,6 @@ public class FullPath {
     private Date date;
 
     @OneToMany(mappedBy = "fullPath", cascade = CascadeType.ALL)
-    private Set<File> files;
+    private List<File> files;
 
 }

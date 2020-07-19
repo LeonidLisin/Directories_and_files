@@ -2,6 +2,8 @@ package ru.leonidlisin.dirsandfiles.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.leonidlisin.dirsandfiles.beans.FullPathFacade;
+import ru.leonidlisin.dirsandfiles.persistence.dto.FileDto;
 import ru.leonidlisin.dirsandfiles.persistence.entities.File;
 import ru.leonidlisin.dirsandfiles.persistence.entities.FullPath;
 import ru.leonidlisin.dirsandfiles.persistence.repositories.FileRepository;
@@ -18,6 +20,27 @@ import java.util.List;
 public class FileService {
 
     private final FileRepository fileRepository;
+    private final FullPathFacade fullPathFacade;
+
+    public List<FileDto> getFormatedFileList(List<File> fileList){
+        String sizeFormatted;
+        List<FileDto> fileDtoList = fullPathFacade.getFileDtoList();
+        fileDtoList.clear();
+        for (File f: fileList){
+            if (f.getSize() == -1){
+                sizeFormatted = "<DIR>";
+            }
+            else {
+                sizeFormatted = fullPathFacade.formatSize(f.getSize());
+            }
+            FileDto fileDto = FileDto.builder()
+                .name(f.getName())
+                .sizeFormatted(sizeFormatted)
+                .build();
+            fileDtoList.add(fileDto);
+        }
+        return fileDtoList;
+    }
 
     @Transactional
     public void save(List<Path> pathes, FullPath fullPath) throws IOException {

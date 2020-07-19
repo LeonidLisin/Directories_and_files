@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.leonidlisin.dirsandfiles.persistence.dto.FullPathDto;
-import ru.leonidlisin.dirsandfiles.persistence.entities.File;
+import ru.leonidlisin.dirsandfiles.services.FileService;
 import ru.leonidlisin.dirsandfiles.services.FullPathService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +20,7 @@ import java.util.UUID;
 public class MainController {
 
     private final FullPathService fullPathService;
+    private final FileService fileService;
 
     @GetMapping
     public String index(Model model){
@@ -36,7 +37,7 @@ public class MainController {
     @PostMapping("/files/{id}")
     public String getFiles(@PathVariable UUID id, Model model) {
         model.addAttribute("title", fullPathService.getFullPathById(id).getFullPath());
-        model.addAttribute("fileList", fullPathService.getFullPathById(id).getFiles());
+        model.addAttribute("fileList", fileService.getFormatedFileList(fullPathService.getFullPathById(id).getFiles()));
         return "files";
     }
 

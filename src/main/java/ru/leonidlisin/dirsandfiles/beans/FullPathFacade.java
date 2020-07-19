@@ -3,6 +3,7 @@ package ru.leonidlisin.dirsandfiles.beans;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
+import ru.leonidlisin.dirsandfiles.persistence.dto.FileDto;
 import ru.leonidlisin.dirsandfiles.persistence.dto.FullPathDto;
 
 import javax.annotation.PostConstruct;
@@ -15,10 +16,12 @@ import java.util.List;
 public class FullPathFacade {
 
     private List<FullPathDto> fullPathList;
+    private List<FileDto> fileDtoList;
 
     @PostConstruct
     public void init(){
         this.fullPathList = new ArrayList<>();
+        this.fileDtoList = new ArrayList<>();
     }
 
     public String formatSize(long size){
@@ -41,6 +44,6 @@ public class FullPathFacade {
             dimension = "Тб";
             value = String.format("%8.2f", dSize/1_099_511_627_776L);
         }
-        return value + dimension;
+        return value + " " + dimension;
     }
 }
