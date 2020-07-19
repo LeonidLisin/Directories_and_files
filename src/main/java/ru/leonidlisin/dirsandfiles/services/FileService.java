@@ -6,6 +6,7 @@ import ru.leonidlisin.dirsandfiles.persistence.entities.File;
 import ru.leonidlisin.dirsandfiles.persistence.entities.FullPath;
 import ru.leonidlisin.dirsandfiles.persistence.repositories.FileRepository;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
@@ -18,6 +19,7 @@ public class FileService {
 
     private final FileRepository fileRepository;
 
+    @Transactional
     public void save(List<Path> pathes, FullPath fullPath) throws IOException {
         for(Path p: pathes){
             boolean isDir = Files.isDirectory(p);
