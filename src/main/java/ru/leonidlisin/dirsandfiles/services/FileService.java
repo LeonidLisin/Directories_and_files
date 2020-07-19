@@ -2,7 +2,7 @@ package ru.leonidlisin.dirsandfiles.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.leonidlisin.dirsandfiles.beans.FullPathFacade;
+import ru.leonidlisin.dirsandfiles.beans.FilePathBean;
 import ru.leonidlisin.dirsandfiles.persistence.dto.FileDto;
 import ru.leonidlisin.dirsandfiles.persistence.entities.File;
 import ru.leonidlisin.dirsandfiles.persistence.entities.FullPath;
@@ -20,18 +20,18 @@ import java.util.List;
 public class FileService {
 
     private final FileRepository fileRepository;
-    private final FullPathFacade fullPathFacade;
+    private final FilePathBean filePathBean;
 
     public List<FileDto> getFormatedFileList(List<File> fileList){
         String sizeFormatted;
-        List<FileDto> fileDtoList = fullPathFacade.getFileDtoList();
+        List<FileDto> fileDtoList = filePathBean.getFileDtoList();
         fileDtoList.clear();
         for (File f: fileList){
             if (f.getSize() == -1){
                 sizeFormatted = "<DIR>";
             }
             else {
-                sizeFormatted = fullPathFacade.formatSize(f.getSize());
+                sizeFormatted = filePathBean.formatSize(f.getSize());
             }
             FileDto fileDto = FileDto.builder()
                 .name(f.getName())

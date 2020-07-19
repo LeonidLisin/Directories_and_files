@@ -2,7 +2,7 @@ package ru.leonidlisin.dirsandfiles.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.leonidlisin.dirsandfiles.beans.FullPathFacade;
+import ru.leonidlisin.dirsandfiles.beans.FilePathBean;
 import ru.leonidlisin.dirsandfiles.persistence.dto.FullPathDto;
 import ru.leonidlisin.dirsandfiles.persistence.entities.FullPath;
 import ru.leonidlisin.dirsandfiles.persistence.repositories.FullPathRepository;
@@ -22,7 +22,7 @@ public class FullPathService {
 
     private final FullPathRepository fullPathRepository;
     private final FileService fileService;
-    private final FullPathFacade fullPathFacade;
+    private final FilePathBean filePathBean;
 
     public List<FullPath> getAllFullPathes(){
         return fullPathRepository.findAll();
@@ -35,7 +35,7 @@ public class FullPathService {
     }
 
     public List<FullPathDto> obtainFullPathList(){
-        List<FullPathDto> list = fullPathFacade.getFullPathList();
+        List<FullPathDto> list = filePathBean.getFullPathDtoList();
         list.clear();
         for(FullPath fp: getAllFullPathes()){
             list.add(obtainDirInfo(fp));
@@ -81,7 +81,7 @@ public class FullPathService {
         } catch (IOException e){
             e.printStackTrace();
         }
-        fullPathDto.setSummarySizeFormatted(fullPathFacade.formatSize(fullPathDto.getSummarySize()));
+        fullPathDto.setSummarySizeFormatted(filePathBean.formatSize(fullPathDto.getSummarySize()));
         return fullPathDto;
     }
 

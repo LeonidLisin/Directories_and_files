@@ -13,14 +13,14 @@ import java.util.List;
 @Component
 @Getter
 @Setter
-public class FullPathFacade {
+public class FilePathBean {
 
-    private List<FullPathDto> fullPathList;
+    private List<FullPathDto> fullPathDtoList;
     private List<FileDto> fileDtoList;
 
     @PostConstruct
     public void init(){
-        this.fullPathList = new ArrayList<>();
+        this.fullPathDtoList = new ArrayList<>();
         this.fileDtoList = new ArrayList<>();
     }
 
