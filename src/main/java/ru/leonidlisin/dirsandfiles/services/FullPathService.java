@@ -81,6 +81,7 @@ public class FullPathService {
         } catch (IOException e){
             e.printStackTrace();
         }
+        fullPathDto.setDirsCount(fullPathDto.getDirsCount()-1);
         fullPathDto.setSummarySizeFormatted(filePathBean.formatSize(fullPathDto.getSummarySize()));
         return fullPathDto;
     }
