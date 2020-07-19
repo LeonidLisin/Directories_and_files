@@ -100,8 +100,16 @@ public class FullPathService {
         return all;
     }
 
+    public boolean isPathValid(FullPathDto fullPathDto){
+        return Files.exists(Paths.get(fullPathDto.getFullPath()));
+    }
+
     @Transactional
     public void save(FullPathDto fullPathDto) throws IOException {
+
+        if (!isPathValid(fullPathDto)){
+            return;
+        }
 
         for (FullPath fp: getAllFullPathes()){
             if (fp.getFullPath().toLowerCase().equals(fullPathDto.getFullPath().toLowerCase())){
