@@ -12,10 +12,7 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,20 +27,29 @@ public class FullPathService {
         return fullPathRepository.findAll();
     }
 
+    public FullPath getFullPathById(UUID id){
+        return fullPathRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("No such path found")
+        );
+    }
+
     public List<FullPathDto> obtainFullPathList(){
         List<FullPathDto> list = fullPathFacade.getFullPathList();
         list.clear();
         for(FullPath fp: getAllFullPathes()){
-            list.add(obtainDirInfo(fp.getFullPath()));
+            list.add(obtainDirInfo(fp));
         }
         return list;
     }
 
-    public FullPathDto obtainDirInfo(String fullPath){
-        FullPathDto fullPathDto = new FullPathDto();
-        fullPathDto.setFullPath(fullPath);
+    public FullPathDto obtainDirInfo(FullPath fullPath){
+        FullPathDto fullPathDto = FullPathDto.builder()
+                .id(fullPath.getId())
+                .fullPath(fullPath.getFullPath())
+                .date(fullPath.getDate())
+                .build();
 
-        Path rootPath = Paths.get(fullPath);
+        Path rootPath = Paths.get(fullPath.getFullPath());
 
         try {
             Files.walkFileTree(rootPath, new SimpleFileVisitor<>() {
