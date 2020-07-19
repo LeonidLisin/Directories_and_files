@@ -102,6 +102,13 @@ public class FullPathService {
 
     @Transactional
     public void save(FullPathDto fullPathDto) throws IOException {
+
+        for (FullPath fp: getAllFullPathes()){
+            if (fp.getFullPath().toLowerCase().equals(fullPathDto.getFullPath().toLowerCase())){
+                return;
+            }
+        }
+
         FullPath fullPath = FullPath.builder()
                 .fullPath(fullPathDto.getFullPath())
                 .date(new Date())
