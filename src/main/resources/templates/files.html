@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="EN">
+<head>
+    <meta charset="utf-8"/>
+    <title>Dir and files</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+
+    <div style="text-align: left;">
+        <h1> [[ ${title} ]] </h1>
+    </div>
+
+    <hr>
+
+    <br>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Файл</th>
+                <th>Размер</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="file, iterator : ${fileList}">
+            <td th:text="${file.name}"></td>
+            <td th:text="${file.size}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
