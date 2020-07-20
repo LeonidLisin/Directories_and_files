@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS file_tbl
         CONSTRAINT file_tbl_pk
             PRIMARY KEY ,
     name VARCHAR NOT NULL ,
-    size BIGINT NOT NULL null,
+    size BIGINT NOT NULL,
     full_path UUID
         CONSTRAINT file_tbl___path_fk
             REFERENCES full_path_tbl
