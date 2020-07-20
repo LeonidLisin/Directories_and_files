@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="dirsandfiles@localhost">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.17">
+    <root id="1">
+      <ServerVersion>11.7</ServerVersion>
+      <StartupTime>1595068863</StartupTime>
+    </root>
+    <database id="2" parent="1" name="Patterns">
+      <ObjectId>16514</ObjectId>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="3" parent="1" name="dirsandfiles">
+      <ObjectId>33588</ObjectId>
+      <Owner>postgres</Owner>
+      <IntrospectionStateNumber>1400</IntrospectionStateNumber>
+      <Current>1</Current>
+    </database>
+    <database id="4" parent="1" name="kinozen">
+      <ObjectId>16843</ObjectId>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="5" parent="1" name="onlineshop">
+      <ObjectId>16393</ObjectId>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="6" parent="1" name="postgres">
+      <ObjectId>13012</ObjectId>
+      <Comment>default administrative connection database</Comment>
+      <Owner>postgres</Owner>
+    </database>
+    <role id="7" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
+    </role>
+    <role id="8" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+    </role>
+    <role id="9" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+    </role>
+    <role id="10" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+    </role>
+    <role id="11" parent="1" name="pg_read_server_files">
+      <ObjectId>4569</ObjectId>
+    </role>
+    <role id="12" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+    </role>
+    <role id="13" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+    </role>
+    <role id="14" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
+    </role>
+    <role id="15" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <BypassRls>1</BypassRls>
+    </role>
+    <schema id="16" parent="3" name="information_schema">
+      <ObjectId>12716</ObjectId>
+      <StateNumber>366</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="17" parent="3" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+      <Comment>system catalog schema</Comment>
+      <StateNumber>359</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="18" parent="3" name="public">
+      <ObjectId>2200</ObjectId>
+      <Comment>standard public schema</Comment>
+      <StateNumber>360</StateNumber>
+      <Owner>postgres</Owner>
+      <IntrospectionStateNumber>1401</IntrospectionStateNumber>
+      <Current>1</Current>
+    </schema>
+    <access-method id="19" parent="3" name="btree">
+      <ObjectId>403</ObjectId>
+      <Comment>b-tree index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.bthandler</Handler>
+      <HandlerId>330</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="20" parent="3" name="hash">
+      <ObjectId>405</ObjectId>
+      <Comment>hash index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.hashhandler</Handler>
+      <HandlerId>331</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="21" parent="3" name="gist">
+      <ObjectId>783</ObjectId>
+      <Comment>GiST index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.gisthandler</Handler>
+      <HandlerId>332</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="22" parent="3" name="gin">
+      <ObjectId>2742</ObjectId>
+      <Comment>GIN index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.ginhandler</Handler>
+      <HandlerId>333</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="23" parent="3" name="spgist">
+      <ObjectId>4000</ObjectId>
+      <Comment>SP-GiST index access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.spghandler</Handler>
+      <HandlerId>334</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <access-method id="24" parent="3" name="brin">
+      <ObjectId>3580</ObjectId>
+      <Comment>block range index (BRIN) access method</Comment>
+      <StateNumber>1</StateNumber>
+      <Handler>pg_catalog.brinhandler</Handler>
+      <HandlerId>335</HandlerId>
+      <Type>index</Type>
+    </access-method>
+    <extension id="25" parent="3" name="plpgsql">
+      <ObjectId>12998</ObjectId>
+      <Comment>PL/pgSQL procedural language</Comment>
+      <StateNumber>519</StateNumber>
+      <Version>1.0</Version>
+      <SchemaName>pg_catalog</SchemaName>
+      <SchemaId>11</SchemaId>
+    </extension>
+    <extension id="26" parent="3" name="uuid-ossp">
+      <ObjectId>33595</ObjectId>
+      <Comment>generate universally unique identifiers (UUIDs)</Comment>
+      <StateNumber>1367</StateNumber>
+      <Version>1.1</Version>
+      <SchemaName>public</SchemaName>
+      <SchemaId>2200</SchemaId>
+    </extension>
+    <table id="27" parent="18" name="file_tbl">
+      <ObjectId>33610</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1389</StateNumber>
+    </table>
+    <table id="28" parent="18" name="full_path_tbl">
+      <ObjectId>33589</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1386</StateNumber>
+    </table>
+    <routine id="29" parent="18" name="uuid_generate_v1">
+      <ObjectId>33601</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1367</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <LanguageName>c</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Strict>1</Strict>
+      <Cost>1.0</Cost>
+      <ConcurrencyKind>safe</ConcurrencyKind>
+    </routine>
+    <routine id="30" parent="18" name="uuid_generate_v1mc">
+      <ObjectId>33602</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1367</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <LanguageName>c</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Strict>1</Strict>
+      <Cost>1.0</Cost>
+      <ConcurrencyKind>safe</ConcurrencyKind>
+    </routine>
+    <routine id="31" parent="18" name="uuid_generate_v3">
+      <ObjectId>33603</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1367</StateNumber>
+      <VolatilityKind>immutable</VolatilityKind>
+      <LanguageName>c</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Strict>1</Strict>
+      <Cost>1.0</Cost>
+      <ConcurrencyKind>safe</ConcurrencyKind>
+    </routine>
+    <routine id="32" parent="18" name="uuid_generate_v4">
+      <ObjectId>33604</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1367</StateNumber>
+      <VolatilityKind>volatile</VolatilityKind>
+      <LanguageName>c</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Strict>1</Strict>
+      <Cost>1.0</Cost>
+      <ConcurrencyKind>safe</ConcurrencyKind>
+    </routine>
+    <routine id="33" parent="18" name="uuid_generate_v5">
+      <ObjectId>33605</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1367</StateNumber>
+      <VolatilityKind>immutable</VolatilityKind>
+      <LanguageName>c</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Strict>1</Strict>
+      <Cost>1.0</Cost>
+      <ConcurrencyKind>safe</ConcurrencyKind>
+    </routine>
+    <routine id="34" parent="18" name="uuid_nil">
+      <ObjectId>33596</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1367</StateNumber>
+      <VolatilityKind>immutable</VolatilityKind>
+      <LanguageName>c</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Strict>1</Strict>
+      <Cost>1.0</Cost>
+      <ConcurrencyKind>safe</ConcurrencyKind>
+    </routine>
+    <routine id="35" parent="18" name="uuid_ns_dns">
+      <ObjectId>33597</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1367</StateNumber>
+      <VolatilityKind>immutable</VolatilityKind>
+      <LanguageName>c</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Strict>1</Strict>
+      <Cost>1.0</Cost>
+      <ConcurrencyKind>safe</ConcurrencyKind>
+    </routine>
+    <routine id="36" parent="18" name="uuid_ns_oid">
+      <ObjectId>33599</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1367</StateNumber>
+      <VolatilityKind>immutable</VolatilityKind>
+      <LanguageName>c</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Strict>1</Strict>
+      <Cost>1.0</Cost>
+      <ConcurrencyKind>safe</ConcurrencyKind>
+    </routine>
+    <routine id="37" parent="18" name="uuid_ns_url">
+      <ObjectId>33598</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1367</StateNumber>
+      <VolatilityKind>immutable</VolatilityKind>
+      <LanguageName>c</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Strict>1</Strict>
+      <Cost>1.0</Cost>
+      <ConcurrencyKind>safe</ConcurrencyKind>
+    </routine>
+    <routine id="38" parent="18" name="uuid_ns_x500">
+      <ObjectId>33600</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1367</StateNumber>
+      <VolatilityKind>immutable</VolatilityKind>
+      <LanguageName>c</LanguageName>
+      <RoutineKind>function</RoutineKind>
+      <Strict>1</Strict>
+      <Cost>1.0</Cost>
+      <ConcurrencyKind>safe</ConcurrencyKind>
+    </routine>
+    <column id="39" parent="27" name="id">
+      <Position>1</Position>
+      <DataType>uuid|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1378</StateNumber>
+      <TypeId>2950</TypeId>
+    </column>
+    <column id="40" parent="27" name="name">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1375</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="41" parent="27" name="size">
+      <Position>3</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1375</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="42" parent="27" name="full_path">
+      <Position>4</Position>
+      <DataType>uuid|0s</DataType>
+      <StateNumber>1399</StateNumber>
+      <TypeId>2950</TypeId>
+    </column>
+    <column id="43" parent="27" name="is_dir">
+      <Position>5</Position>
+      <DataType>boolean|0s</DataType>
+      <StateNumber>1389</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <index id="44" parent="27" name="file_tbl_id_uindex">
+      <ObjectId>33616</ObjectId>
+      <StateNumber>1379</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="45" parent="27" name="file_tbl_pk">
+      <ObjectId>33617</ObjectId>
+      <StateNumber>1380</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="46" parent="27" name="file_tbl_pk">
+      <ObjectId>33618</ObjectId>
+      <StateNumber>1380</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>file_tbl_pk</UnderlyingIndexName>
+    </key>
+    <foreign-key id="47" parent="27" name="file_tbl___path_fk">
+      <ObjectId>33619</ObjectId>
+      <StateNumber>1386</StateNumber>
+      <ColNames>full_path</ColNames>
+      <RefTableId>33589</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>full_path_tbl</RefTableName>
+      <RefKeyName>full_path_tbl_pk</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="48" parent="28" name="id">
+      <Position>1</Position>
+      <DataType>uuid|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1362</StateNumber>
+      <TypeId>2950</TypeId>
+    </column>
+    <column id="49" parent="28" name="full_path">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1395</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="50" parent="28" name="date">
+      <Position>3</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1371</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <index id="51" parent="28" name="full_path_tbl_id_uindex">
+      <ObjectId>33592</ObjectId>
+      <StateNumber>1363</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="52" parent="28" name="full_path_tbl_pk">
+      <ObjectId>33593</ObjectId>
+      <StateNumber>1364</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <index id="53" parent="28" name="full_path_tbl_path_uindex">
+      <ObjectId>33609</ObjectId>
+      <StateNumber>1372</StateNumber>
+      <ColNames>full_path</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="54" parent="28" name="full_path_tbl_pk">
+      <ObjectId>33594</ObjectId>
+      <StateNumber>1364</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>full_path_tbl_pk</UnderlyingIndexName>
+    </key>
+    <argument id="55" parent="29">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>uuid|0s</DataType>
+    </argument>
+    <argument id="56" parent="30">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>uuid|0s</DataType>
+    </argument>
+    <argument id="57" parent="31" name="namespace">
+      <Position>1</Position>
+      <DataType>uuid|0s</DataType>
+    </argument>
+    <argument id="58" parent="31" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </argument>
+    <argument id="59" parent="31">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>uuid|0s</DataType>
+    </argument>
+    <argument id="60" parent="32">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>uuid|0s</DataType>
+    </argument>
+    <argument id="61" parent="33" name="namespace">
+      <Position>1</Position>
+      <DataType>uuid|0s</DataType>
+    </argument>
+    <argument id="62" parent="33" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </argument>
+    <argument id="63" parent="33">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>uuid|0s</DataType>
+    </argument>
+    <argument id="64" parent="34">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>uuid|0s</DataType>
+    </argument>
+    <argument id="65" parent="35">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>uuid|0s</DataType>
+    </argument>
+    <argument id="66" parent="36">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>uuid|0s</DataType>
+    </argument>
+    <argument id="67" parent="37">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>uuid|0s</DataType>
+    </argument>
+    <argument id="68" parent="38">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>uuid|0s</DataType>
+    </argument>
+  </database-model>
+</dataSource>
