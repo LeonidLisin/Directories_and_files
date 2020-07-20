@@ -15,6 +15,11 @@ import java.util.List;
 @Setter
 public class FilePathBean {
 
+    private final long kiloByte = 1024L;
+    private final long megaByte = 1_048_576L;
+    private final long gigaByte = 1_073_741_824L;
+    private final long teraByte = 1_099_511_627_776L;
+
     private List<FullPathDto> fullPathDtoList;
     private List<FileDto> fileDtoList;
     private StringBuilder block;
@@ -30,21 +35,21 @@ public class FilePathBean {
         double dSize = (double) size;
         String dimension = "б", value = String.valueOf(size);
 
-        if (size >= 1024L && size < 1_048_576L){
+        if (size >= kiloByte && size < megaByte){
             dimension = "кб";
-            value = String.format("%8.2f", dSize/1024L);
+            value = String.format("%8.2f", dSize/kiloByte);
         }
-        if (size >= 1_048_576L && size < 1_073_741_824L){
+        if (size >= megaByte && size < gigaByte){
             dimension = "Мб";
-            value = String.format("%8.2f", dSize/1_048_576L);
+            value = String.format("%8.2f", dSize/megaByte);
         }
-        if (size >= 1_073_741_824L && size < 1_099_511_627_776L){
+        if (size >= gigaByte && size < teraByte){
             dimension = "Гб";
-            value = String.format("%8.2f", dSize/1_073_741_824L);
+            value = String.format("%8.2f", dSize/gigaByte);
         }
-        if (size >= 1_099_511_627_776L && size < 1_125_899_906_842_624L){
+        if (size >= teraByte){
             dimension = "Тб";
-            value = String.format("%8.2f", dSize/1_099_511_627_776L);
+            value = String.format("%8.2f", dSize/teraByte);
         }
         return value + " " + dimension;
     }
