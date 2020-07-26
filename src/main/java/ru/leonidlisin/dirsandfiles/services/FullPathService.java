@@ -68,12 +68,20 @@ public class FullPathService {
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
                     long size = 0;
                     filesCount++;
+                    FileChannel fileChannel = null;
                     try {
-                        FileChannel fileChannel = FileChannel.open(file);
+                        fileChannel = FileChannel.open(file);
                         size = fileChannel.size();
-                        fileChannel.close();
                     } catch (IOException e) {
                         e.printStackTrace();
+                    }
+                    finally {
+                        Objects.requireNonNull(fileChannel);
+                        try {
+                            fileChannel.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                     summarySize += size;
                     fullPathDto.setFilesCount(filesCount);

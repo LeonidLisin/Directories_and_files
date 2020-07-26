@@ -14,6 +14,7 @@ import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -42,13 +43,21 @@ public class FileService {
         for(Path p: pathes){
             boolean isDir = Files.isDirectory(p);
             long size = -1;
+            FileChannel fileChannel = null;
             if (!isDir) {
                 try {
-                    FileChannel fileChannel = FileChannel.open(p);
+                    fileChannel = FileChannel.open(p);
                     size = fileChannel.size();
-                    fileChannel.close();
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+                finally {
+                    Objects.requireNonNull(fileChannel);
+                    try {
+                        fileChannel.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
             fileRepository.save(
