@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.leonidlisin.dirsandfiles.beans.FilePathBean;
 import ru.leonidlisin.dirsandfiles.persistence.dto.FullPathDto;
+import ru.leonidlisin.dirsandfiles.persistence.entities.File;
 import ru.leonidlisin.dirsandfiles.persistence.entities.FullPath;
 import ru.leonidlisin.dirsandfiles.persistence.repositories.FullPathRepository;
 import ru.leonidlisin.dirsandfiles.utils.sort.FileNameComparator;
@@ -52,7 +53,7 @@ public class FullPathService {
                 .fullPath(fullPath.getFullPath())
                 .date(fullPath.getDate())
                 .dateFormatted(
-                    new SimpleDateFormat("d.MM.y k.mm", Locale.getDefault()).format(fullPath.getDate())
+                        new SimpleDateFormat("d.MM.y k.mm", Locale.getDefault()).format(fullPath.getDate())
                 )
                 .build();
 
@@ -64,9 +65,17 @@ public class FullPathService {
                 long summarySize = 0;
 
                 @Override
-                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
+                    long size = 0;
                     filesCount++;
-                    summarySize += FileChannel.open(file).size();
+                    try {
+                        FileChannel fileChannel = FileChannel.open(file);
+                        size = fileChannel.size();
+                        fileChannel.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    summarySize += size;
                     fullPathDto.setFilesCount(filesCount);
                     fullPathDto.setSummarySize(summarySize);
                     return FileVisitResult.CONTINUE;
@@ -91,12 +100,12 @@ public class FullPathService {
     private List<Path> getDirContent(String fullPath) throws IOException {
         List<Path> folders =  Files.list(Paths.get(fullPath))
                 .filter(p -> Files.isDirectory(p))
-                .sorted((comparator))
+                .sorted(comparator)
                 .collect(Collectors.toList());
 
         List<Path> files =  Files.list(Paths.get(fullPath))
                 .filter(p -> !Files.isDirectory(p))
-                .sorted((comparator))
+                .sorted(comparator)
                 .collect(Collectors.toList());
         List<Path> all = new ArrayList<>(folders);
         all.addAll(files);
