@@ -27,34 +27,37 @@ public class FileService {
         List<FileDto> fileDtoList = filePathBean.getFileDtoList();
         fileDtoList.clear();
         for (File f: fileList){
-            if (f.getSize() == -1){
-                sizeFormatted = "<DIR>";
-            }
-            else {
-                sizeFormatted = filePathBean.formatSize(f.getSize());
-            }
+            sizeFormatted = f.getSize() == -1 ? "<DIR>" : filePathBean.formatSize(f.getSize());
             FileDto fileDto = FileDto.builder()
-                .name(f.getName())
-                .sizeFormatted(sizeFormatted)
-                .build();
+                    .name(f.getName())
+                    .sizeFormatted(sizeFormatted)
+                    .build();
             fileDtoList.add(fileDto);
         }
         return fileDtoList;
     }
 
     @Transactional
-    public void save(List<Path> pathes, FullPath fullPath) throws IOException {
+    public void save(List<Path> pathes, FullPath fullPath) {
         for(Path p: pathes){
             boolean isDir = Files.isDirectory(p);
             long size = -1;
-            if (!isDir) size = FileChannel.open(p).size();
+            if (!isDir) {
+                try {
+                    FileChannel fileChannel = FileChannel.open(p);
+                    size = fileChannel.size();
+                    fileChannel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
             fileRepository.save(
                     File.builder()
-                    .name(p.getFileName().toString())
-                    .size(size)
-                    .fullPath(fullPath)
-                    .isDir(isDir)
-                    .build()
+                            .name(p.getFileName().toString())
+                            .size(size)
+                            .fullPath(fullPath)
+                            .isDir(isDir)
+                            .build()
             );
         }
     }
